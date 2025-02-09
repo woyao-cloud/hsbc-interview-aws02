@@ -20,7 +20,7 @@ class SpringBootServiceTest extends Specification {
         then:
         with(response) {
             id == 1
-            name == "张三"
+            name == "zhangsan"
         }
 
     }

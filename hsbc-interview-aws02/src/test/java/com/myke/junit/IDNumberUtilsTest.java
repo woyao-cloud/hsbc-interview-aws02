@@ -32,11 +32,11 @@ public class IDNumberUtilsTest {
         return new Object[]{
                 new Object[]{
                         "410823199110090218", (Predicate<Map<String, String>>) map ->
-                        "{birthday=1991-10-09, sex=男, age=22}".equals(map.toString())
+                        "{birthday=1991-10-09, sex=male, age=22}".equals(map.toString())
                 },
                 new Object[]{
                         "410823199110090218", (Predicate<Map<String, String>>) map ->
-                        "{birthday=1991-10-09, sex=男, age=30}".equals(map.toString())
+                        "{birthday=1991-10-09, sex=male, age=30}".equals(map.toString())
                 },
 
         };

@@ -75,8 +75,8 @@ class OrderServiceStaticTest extends BaseSpock {
 
         where: "表格方式验证订单属性转换结果"
         order                || desc
-        new OrderVO(type: 1) || "App端订单"
-        new OrderVO(type: 2) || "H5端订单"
-        new OrderVO(type: 3) || "PC端订单"
+        new OrderVO(type: 1) || "App"
+        new OrderVO(type: 2) || "H5"
+        new OrderVO(type: 3) || "PC"
     }
 }

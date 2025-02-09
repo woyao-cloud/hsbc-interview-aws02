@@ -59,11 +59,11 @@ public class OrderService {
             //将orderDTO转换为orderVO，然后根据type的值走不同的分支
             OrderVO orderVO = OrderMapper.INSTANCE.convert(orderDTO);
             if (1 == orderVO.getType()) {
-                orderVO.setOrderDesc("App端订单");
+                orderVO.setOrderDesc("App");
             } else if (2 == orderVO.getType()) {
-                orderVO.setOrderDesc("H5端订单");
+                orderVO.setOrderDesc("H5");
             } else if (3 == orderVO.getType()) {
-                orderVO.setOrderDesc("PC端订单");
+                orderVO.setOrderDesc("PC");
             }
             orderList.add(orderVO);
         }

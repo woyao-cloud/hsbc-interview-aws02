@@ -73,7 +73,7 @@ class UserControllerTest extends Specification {
             user.telephone = "15801833812"
         }
         def condition4 = {
-            user.sex = "男"
+            user.sex = "male"
         }
         def condition5 = {
             user.userOrders = [new OrderVO()]

@@ -42,14 +42,14 @@ public class IDNumberUtils {
                     + certificateNo.substring(8, 10) + "-"
                     + certificateNo.substring(10, 12);
             sex = Integer.parseInt(certificateNo.substring(certificateNo.length() - 3,
-                    certificateNo.length())) % 2 == 0 ? "女" : "男";
+                    certificateNo.length())) % 2 == 0 ? "female" : "male";
             age = (year - Integer.parseInt("19" + certificateNo.substring(6, 8))) + "";
         } else if (flag && certificateNo.length() == 18) {
             birthday = certificateNo.substring(6, 10) + "-"
                     + certificateNo.substring(10, 12) + "-"
                     + certificateNo.substring(12, 14);
             sex = Integer.parseInt(certificateNo.substring(certificateNo.length() - 4,
-                    certificateNo.length() - 1)) % 2 == 0 ? "女" : "男";
+                    certificateNo.length() - 1)) % 2 == 0 ? "female" : "male";
             age = (year - Integer.parseInt(certificateNo.substring(6, 10))) + "";
         }
         Map<String, String> map = new HashMap<>();

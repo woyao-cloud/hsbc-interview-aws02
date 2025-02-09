@@ -18,7 +18,7 @@ public class UserDAO {
         List<UserDTO> users = new ArrayList<>();
         UserDTO user = new UserDTO();
         user.setId(1);
-        user.setName("张三");
+        user.setName("zhangsan");
         user.setAge(28);
         user.setProvince("ShangHai");
         users.add(user);
