@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>spock-guide</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <spock-spring.version>1.3-groovy-2.5</spock-spring.version>
+        <groovy.version>2.5.8</groovy.version>
+
+        <powermock.version>2.0.4</powermock.version>
+        <jmockit.version>1.39</jmockit.version>
+        <junitparams.version>1.1.0</junitparams.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <spring-boot-dependencies.version>2.1.6.RELEASE</spring-boot-dependencies.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!--region mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.25</version>
+        </dependency>
+        <!--endregion-->
+
+
+        <!--region Spock必须的依赖-->
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${spock-spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--如果是在Spring环境下测试时，添加该依赖-->
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-spring</artifactId>
+            <version>${spock-spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--可以在内部将JUnit 4规则包装到Spock扩展中，并在Spock的生命周期中执行它-->
+        <!--<dependency>-->
+        <!--    <groupId>org.spockframework</groupId>-->
+        <!--    <artifactId>spock-junit4</artifactId>-->
+        <!--    <version>${spock-spring.version}</version>-->
+        <!--    <scope>test</scope>-->
+        <!--</dependency>-->
+
+        <!-- 引入 groovy 依赖，可以自己依赖，也可以直接使用 spock 的-->
+        <!--<dependency>-->
+        <!--    <groupId>org.codehaus.groovy</groupId>-->
+        <!--    <artifactId>groovy-all</artifactId>-->
+        <!--    <version>${groovy.version}</version>-->
+        <!--    <type>pom</type>-->
+        <!--    <scope>test</scope>-->
+        <!--   groovy-test-junit5 和 groovy-testng，这两个包和和 power mock 有冲突-->
+        <!--    <exclusions>-->
+        <!--        <exclusion>-->
+        <!--            <artifactId>groovy-test-junit5</artifactId>-->
+        <!--            <groupId>org.codehaus.groovy</groupId>-->
+        <!--        </exclusion>-->
+        <!--        <exclusion>-->
+        <!--            <artifactId>groovy-testng</artifactId>-->
+        <!--            <groupId>org.codehaus.groovy</groupId>-->
+        <!--        </exclusion>-->
+        <!--    </exclusions>-->
+        <!--</dependency>-->
+
+
+        <!--endregion-->
+
+
+        <!--region junit 参数化-->
+        <!--https://www.cnblogs.com/lingshang/p/10950947.html-->
+        <!--<dependency>-->
+        <!--    <groupId>junit</groupId>-->
+        <!--    <artifactId>junit</artifactId>-->
+        <!--    <version>4.12</version>-->
+        <!--</dependency>-->
+
+        <!--
+        使用JUnitParams做参数化单元测试
+         junit 参数化测试，只是为了演示对比，Spock不需要引入该依赖
+         -->
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${junitparams.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+
+        <!--region jmockit 测试框架-->
+
+        <!-- jmockit，只是为了演示对比，Spock不需要引入该依赖 -->
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.code.findbugs</groupId>
+                    <artifactId>jsr305</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+        <!--region power mock-->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+
+        <!--region mapstruct 对象属性拷贝-->
+
+        <!-- 对象属性拷贝，只是为了演示，Spock不需要引入该依赖 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <!--endregion-->
+
+
+        <!--region 单元测试覆盖率插件-->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+        </dependency>
+        <!--endregion-->
+
+
+        <!--region DAO层测试-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!--Maven打包时单元测试扫描类配置-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!--使得测试出错不影响项目的编译-->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/*Spec.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/Abstract*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+
+         
+            <!--
+            jacoco统计单测覆盖率
+
+            执行mvn package 命令，成功后会在target目录下生成单元测试覆盖率的报告,
+            绿色背景表示完全覆盖，黄色是部分覆盖，红色没有覆盖到
+            -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+                <configuration>
+                    <includes>
+                        <include>com/myke/*/*</include>
+                    </includes>
+                      <excludes>
+                    <exclude>com/myke/model/*/*</exclude>
+                    <exclude>com/myke/**/*Mapper</exclude>
+                     <exclude>com/myke/Application</exclude>
+                    <exclude>**/Abstract*.java</exclude>
+                </excludes>
+                    <destFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</destFile>
+                    <dataFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</dataFile>
+
+                    <!-- rules 指定覆盖规则 -->
+                    <!--<rules>-->
+                    <!--    <rule implementation="org.jacoco.maven.RuleConfiguration">-->
+                    <!--        <element>BUNDLE</element>-->
+                    <!--        <limits>-->
+                    <!--            &lt;!&ndash; 指定方法覆盖到50% &ndash;&gt;-->
+                    <!--            <limit implementation="org.jacoco.report.check.Limit">-->
+                    <!--                <counter>METHOD</counter>-->
+                    <!--                <value>COVEREDRATIO</value>-->
+                    <!--                <minimum>0.50</minimum>-->
+                    <!--            </limit>-->
+                    <!--            &lt;!&ndash; 指定分支覆盖到50% &ndash;&gt;-->
+                    <!--            <limit implementation="org.jacoco.report.check.Limit">-->
+                    <!--                <counter>BRANCH</counter>-->
+                    <!--                <value>COVEREDRATIO</value>-->
+                    <!--                <minimum>0.50</minimum>-->
+                    <!--            </limit>-->
+                    <!--            &lt;!&ndash; 指定类覆盖到100%，不能遺失任何類 &ndash;&gt;-->
+                    <!--            <limit implementation="org.jacoco.report.check.Limit">-->
+                    <!--                <counter>CLASS</counter>-->
+                    <!--                <value>MISSEDCOUNT</value>-->
+                    <!--                <maximum>0</maximum>-->
+                    <!--            </limit>-->
+                    <!--        </limits>-->
+                    <!--    </rule>-->
+                    <!--</rules>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
