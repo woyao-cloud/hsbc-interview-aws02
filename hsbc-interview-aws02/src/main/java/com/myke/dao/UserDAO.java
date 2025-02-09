@@ -20,7 +20,7 @@ public class UserDAO {
         user.setId(1);
         user.setName("张三");
         user.setAge(28);
-        user.setProvince("上海");
+        user.setProvince("ShangHai");
         users.add(user);
         return users;
     }

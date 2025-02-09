@@ -32,4 +32,14 @@ class SpockSpyServiceTest extends Specification {
         then:
         result > 0
     }
+    def "test methodB"() {
+        given:
+        def spy = Spy(SpockSpyService)
+
+        when:
+        def result = spy.methodB()
+
+        then:
+        result == 5
+    }
 }

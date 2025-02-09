@@ -27,7 +27,7 @@ class UserServiceStaticTest extends BaseSpock {
 
     def "GetUserByIdStatic"() {
         given: "设置请求参数"
-        def user1 = new UserDTO(id: 1, name: "张三", province: "上海")
+        def user1 = new UserDTO(id: 1, name: "张三", province: "ShangHai")
         def user2 = new UserDTO(id: 2, name: "李四", province: "江苏")
         def idMap = ["birthday": "1992-09-18", "sex": "男", "age": "28"]
 
@@ -44,7 +44,7 @@ class UserServiceStaticTest extends BaseSpock {
         then: "验证返回结果是否符合预期值"
         with(response) {
             name == "张三"
-            abbreviation == "沪"
+            abbreviation == "Hu"
             postCode == 200000
             age == 28
         }

@@ -65,7 +65,7 @@
   ```
 - Groovy默认会提供一个包含所有对象属性的构造方法。而且调用方式上可以指定属性名
   ```groovy
-     def user1 = new UserDTO(id: 1, name: "张三", province: "上海")
+     def user1 = new UserDTO(id: 1, name: "张三", province: "ShangHai")
   ```  
 
 ## Spock 语法

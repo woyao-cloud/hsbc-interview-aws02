@@ -1,5 +1,6 @@
-package com.myke.service;
+package com.myke.a;
 
+import com.myke.a.AbstractService;
 import com.myke.dao.MoneyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 

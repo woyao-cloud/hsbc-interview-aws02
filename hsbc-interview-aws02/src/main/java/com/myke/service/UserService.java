@@ -44,12 +44,12 @@ public class UserService {
         userVO.setSex(userDTO.getSex());
         userVO.setAge(userDTO.getAge());
         // 显示邮编
-        if ("上海".equals(userDTO.getProvince())) {
-            userVO.setAbbreviation("沪");
+        if ("ShangHai".equals(userDTO.getProvince())) {
+            userVO.setAbbreviation("Hu");
             userVO.setPostCode(200000);
         }
-        if ("北京".equals(userDTO.getProvince())) {
-            userVO.setAbbreviation("京");
+        if ("BeiJing".equals(userDTO.getProvince())) {
+            userVO.setAbbreviation("Jing");
             userVO.setPostCode(100000);
         }
         // 手机号处理
@@ -139,12 +139,12 @@ public class UserService {
         userVO.setId(userDTO.getId());
         userVO.setName(userDTO.getName());
         userVO.setSex(userDTO.getSex());
-        if ("上海".equals(userDTO.getProvince())) {
-            userVO.setAbbreviation("沪");
+        if ("ShangHai".equals(userDTO.getProvince())) {
+            userVO.setAbbreviation("Hu");
             userVO.setPostCode(200000);
         }
-        if ("北京".equals(userDTO.getProvince())) {
-            userVO.setAbbreviation("京");
+        if ("BeiJing".equals(userDTO.getProvince())) {
+            userVO.setAbbreviation("Jing");
             userVO.setPostCode(100000);
         }
         if (null != userDTO.getTelephone() && !"".equals(userDTO.getTelephone())) {

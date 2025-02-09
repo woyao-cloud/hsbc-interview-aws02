@@ -24,7 +24,7 @@ class UserServiceTest extends Specification {
     def "test getUserById"() {
         // given 定义数据
         given: "设置请求参数"
-        def user1 = new UserDTO(id: 1, name: "张三", province: "上海")
+        def user1 = new UserDTO(id: 1, name: "张三", province: "ShangHai")
         def user2 = new UserDTO(id: 2, name: "李四", province: "江苏")
         // and 准备数据
         and: "mock掉接口返回的用户信息"
@@ -37,7 +37,7 @@ class UserServiceTest extends Specification {
         then: "验证返回结果是否符合预期值"
         with(response) {
             name == "张三"
-            abbreviation == "沪"
+            abbreviation == "Hu"
             postCode == 200000
         }
     }
@@ -57,8 +57,8 @@ class UserServiceTest extends Specification {
         }
         where: "经典之处：表格方式验证学生信息的分支场景"
         id | students                  || postCodeResult | abbreviationResult
-        1  | getStudent(1, "张三", "北京") || 100000         | "京"
-        2  | getStudent(2, "李四", "上海") || 200000         | "沪"
+        1  | getStudent(1, "张三", "BeiJing") || 100000         | "Jing"
+        2  | getStudent(2, "李四", "ShangHai") || 200000         | "Hu"
     }
 
     def getStudent(def id, def name, def province) {
